@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1397</width>
+    <height>975</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Qt Algorithms Visualizer</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+    background-color: #353535;
+    color: white;
+    font-family: Arial;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QWidget" name="left_widget" native="true">
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <property name="leftMargin">
+        <number>10</number>
+       </property>
+       <property name="topMargin">
+        <number>10</number>
+       </property>
+       <property name="rightMargin">
+        <number>10</number>
+       </property>
+       <property name="bottomMargin">
+        <number>10</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+    color: white;
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bold;
+}</string>
+         </property>
+         <property name="text">
+          <string>Библиотека алгоритмов:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTreeWidget" name="tree_widget">
+         <property name="styleSheet">
+          <string notr="true">QTreeWidget {
+    background-color: #252525;
+    color: white;
+    border: 1px solid #555555;
+    font-family: Arial;
+    font-size: 11px;
+    outline: none;
+}
+QTreeWidget::item {
+    padding: 5px;
+    border-bottom: 1px solid #444444;
+}
+QTreeWidget::item:selected {
+    background-color: #2a82da;
+    color: white;
+}
+QTreeWidget::item:hover {
+    background-color: #3a3a3a;
+}
+QHeaderView::section {
+    background-color: #454545;
+    color: white;
+    padding: 6px;
+    border: 1px solid #555555;
+    font-weight: bold;
+}</string>
+         </property>
+         <property name="headerHidden">
+          <bool>false</bool>
+         </property>
+         <column>
+          <property name="text">
+           <string>Алгоритмы</string>
+          </property>
+         </column>
+         <item>
+          <property name="text">
+           <string>Сортировки</string>
+          </property>
+          <item>
+           <property name="text">
+            <string>Сортировка пузырьком</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Сортировка подсчетом</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Быстрая сортировка</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Сортировка слиянием</string>
+           </property>
+          </item>
+         </item>
+         <item>
+          <property name="text">
+           <string>Алгоритмы поиска</string>
+          </property>
+          <item>
+           <property name="text">
+            <string>Бинарный поиск</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Поиск в ширину(BFS)</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Поиск в глубину(DFS)</string>
+           </property>
+          </item>
+         </item>
+         <item>
+          <property name="text">
+           <string>Теория чисел</string>
+          </property>
+          <item>
+           <property name="text">
+            <string>Решето Эратосфена</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Алгоритм Евклида</string>
+           </property>
+          </item>
+         </item>
+         <item>
+          <property name="text">
+           <string>Динамическое программирование</string>
+          </property>
+          <item>
+           <property name="text">
+            <string>Последовательность Фибоначчи</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Задача о рюкзаке</string>
+           </property>
+          </item>
+         </item>
+         <item>
+          <property name="text">
+           <string>Графы</string>
+          </property>
+          <item>
+           <property name="text">
+            <string>Алгоритм Дейкстры</string>
+           </property>
+          </item>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="background">
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background-color: #454545;
+    color: white;
+    border: 1px solid #555555;
+    padding: 8px 12px;
+    font-family: Arial;
+    font-size: 11px;
+    font-weight: bold;
+    min-height: 20px;
+}
+QPushButton:hover {
+    background-color: #555555;
+    border: 1px solid #666666;
+}
+QPushButton:pressed {
+    background-color: #2a82da;
+    border: 1px solid #1a72ca;
+}</string>
+         </property>
+         <property name="text">
+          <string>Сменить обои</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="export_layout">
+         <property name="spacing">
+          <number>10</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="export_csv_btn">
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #454545;
+    color: white;
+    border: 1px solid #555555;
+    padding: 8px 12px;
+    font-family: Arial;
+    font-size: 11px;
+    font-weight: bold;
+    min-height: 20px;
+}
+QPushButton:hover {
+    background-color: #555555;
+    border: 1px solid #666666;
+}
+QPushButton:pressed {
+    background-color: #2a82da;
+    border: 1px solid #1a72ca;
+}</string>
+           </property>
+           <property name="text">
+            <string>Экспорт информации в CSV</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="export_txt_btn">
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #454545;
+    color: white;
+    border: 1px solid #555555;
+    padding: 8px 12px;
+    font-family: Arial;
+    font-size: 11px;
+    font-weight: bold;
+    min-height: 20px;
+}
+QPushButton:hover {
+    background-color: #555555;
+    border: 1px solid #666666;
+}
+QPushButton:pressed {
+    background-color: #2a82da;
+    border: 1px solid #1a72ca;
+}</string>
+           </property>
+           <property name="text">
+            <string>Экспорт кодов в TXT</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="right_widget" native="true">
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <property name="leftMargin">
+        <number>10</number>
+       </property>
+       <property name="topMargin">
+        <number>10</number>
+       </property>
+       <property name="rightMargin">
+        <number>10</number>
+       </property>
+       <property name="bottomMargin">
+        <number>10</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+    color: white;
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bold;
+}</string>
+         </property>
+         <property name="text">
+          <string>Визуализация алгоритма:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="player_widget" native="true">
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QTextEdit" name="textEdit">
+            <property name="styleSheet">
+             <string notr="true">QTextEdit {
+    background-color: #252525;
+    color: white;
+    border: 1px solid #555555;
+    font-family: Arial;
+    font-size: 11px;
+    padding: 5px;
+}
+QTextEdit:focus {
+    border: 1px solid #2a82da;
+}
+QScrollBar:vertical {
+    background: #454545;
+    width: 12px;
+}
+QScrollBar::handle:vertical {
+    background: #757575;
+    border-radius: 2px;
+}
+QScrollBar::handle:vertical:hover {
+    background: #858585;
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="control_layout">
+            <property name="spacing">
+             <number>10</number>
+            </property>
+            <item>
+             <widget class="QSlider" name="progress_slider">
+              <property name="styleSheet">
+               <string notr="true">QSlider::groove:horizontal {
+    border: 1px solid #555555;
+    height: 6px;
+    background: #454545;
+    border-radius: 2px;
+}
+QSlider::handle:horizontal {
+    background: #757575;
+    border: 1px solid #555555;
+    width: 14px;
+    margin: -4px 0;
+    border-radius: 3px;
+}
+QSlider::handle:horizontal:hover {
+    background: #858585;
+}
+QSlider::sub-page:horizontal {
+    background: #2a82da;
+    border-radius: 2px;
+}</string>
+              </property>
+              <property name="minimum">
+               <number>0</number>
+              </property>
+              <property name="maximum">
+               <number>100</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="time_label">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: #454545;
+    color: white;
+    border: 1px solid #555555;
+    padding: 6px;
+    font-family: Arial;
+    font-size: 11px;
+    font-weight: bold;
+}</string>
+              </property>
+              <property name="text">
+               <string>00:00 / 00:00</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="fixedWidth" stdset="0">
+               <number>100</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+    color: white;
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bold;
+}</string>
+         </property>
+         <property name="text">
+          <string>Информация об алгоритме:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="info_widget" native="true">
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <property name="spacing">
+           <number>10</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="title_label">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    color: white;
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #454545;
+    padding: 10px;
+    border: 1px solid #555555;
+}</string>
+            </property>
+            <property name="text">
+             <string>Выберите категорию или алгоритм</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTextEdit" name="textEdit_2">
+            <property name="styleSheet">
+             <string notr="true">QTextEdit {
+    background-color: #252525;
+    color: white;
+    border: 1px solid #555555;
+    font-family: Arial;
+    font-size: 18px;
+    padding: 5px;
+}
+QTextEdit:focus {
+    border: 1px solid #2a82da;
+}
+QScrollBar:vertical {
+    background: #454545;
+    width: 12px;
+}
+QScrollBar::handle:vertical {
+    background: #757575;
+    border-radius: 2px;
+}
+QScrollBar::handle:vertical:hover {
+    background: #858585;
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="update_btn">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: #454545;
+    color: white;
+    border: 1px solid #555555;
+    padding: 8px 12px;
+    font-family: Arial;
+    font-size: 11px;
+    font-weight: bold;
+    min-height: 20px;
+}
+QPushButton:hover {
+    background-color: #555555;
+    border: 1px solid #666666;
+}
+QPushButton:pressed {
+    background-color: #2a82da;
+    border: 1px solid #1a72ca;
+}</string>
+            </property>
+            <property name="text">
+             <string>Изменить информацию</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="complexity_group">
+            <property name="styleSheet">
+             <string notr="true">QGroupBox {
+    background-color: #353535;
+    color: white;
+    border: 1px solid #555555;
+    font-family: Arial;
+    font-size: 11px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+QGroupBox::title {
+    color: white;
+    background-color: #454545;
+    padding: 5px 10px;
+    border: 1px solid #555555;
+    subcontrol-origin: margin;
+    subcontrol-position: top center;
+}</string>
+            </property>
+            <property name="title">
+             <string>Асимптотика</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_5">
+             <property name="spacing">
+              <number>5</number>
+             </property>
+             <property name="leftMargin">
+              <number>5</number>
+             </property>
+             <property name="topMargin">
+              <number>15</number>
+             </property>
+             <property name="rightMargin">
+              <number>5</number>
+             </property>
+             <property name="bottomMargin">
+              <number>5</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="time">
+               <property name="styleSheet">
+                <string notr="true">QLabel {
+    color: white;
+    font-family: Arial;
+    font-size: 11px;
+    background-color: #454545;
+    padding: 8px;
+    border: 1px solid #555555;
+}</string>
+               </property>
+               <property name="text">
+                <string>Временная сложность: </string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="styleSheet">
+    <string notr="true">QStatusBar {
+    background-color: #454545;
+    color: white;
+    font-family: Arial;
+    font-size: 11px;
+    border-top: 1px solid #555555;
+}</string>
+   </property>
+  </widget>
+  <action name="actionPlay">
+   <property name="text">
+    <string>▶ Воспроизведение</string>
+   </property>
+  </action>
+  <action name="actionPause">
+   <property name="text">
+    <string>⏸ Пауза</string>
+   </property>
+  </action>
+  <action name="actionStop">
+   <property name="text">
+    <string>⏹ Стоп</string>
+   </property>
+  </action>
+  <action name="actionSettings">
+   <property name="text">
+    <string>⚙ Настройки</string>
+   </property>
+  </action>
+  <action name="actionHelp">
+   <property name="text">
+    <string>❓ Справка</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
