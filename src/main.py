@@ -1,7 +1,9 @@
 import sys
 from PyQt6.QtGui import QPixmap
 from PyQt6.QtCore import Qt, QUrl
-from PyQt6.QtWidgets import QApplication, QMainWindow, QLabel, QMessageBox
+from PyQt6.QtWidgets import (QApplication, QMainWindow, QLabel, QMessageBox,
+                             QTextEdit, QPushButton, QVBoxLayout, QFrame,
+                             QHBoxLayout, QDialog)
 from PyQt6.QtMultimediaWidgets import QVideoWidget
 from PyQt6.QtMultimedia import QMediaPlayer
 from modules.DbManager import DatabaseManager
@@ -77,6 +79,133 @@ class VideoManager:
             self.media_player.setPosition(int(new_position))
 
 
+class AboutDialog(QDialog):
+    """
+    Класс показа формы с информацией о программе
+    """
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.setWindowTitle("About")
+        self.setFixedSize(450, 500)
+        self.setStyleSheet("""
+            QDialog {
+                background-color: #2b2b2b;
+                color: #ffffff;
+                font-family: 'Segoe UI', Arial;
+            }
+            QLabel {
+                color: #cccccc;
+                font-size: 12px;
+            }
+            QLabel#titleLabel {
+                color: #ffffff;
+                font-size: 18px;
+                font-weight: bold;
+            }
+            QLabel#versionLabel {
+                color: #0078d7;
+                font-size: 14px;
+                font-weight: bold;
+            }
+            QPushButton {
+                background-color: #404040;
+                color: #ffffff;
+                border: 1px solid #555555;
+                border-radius: 4px;
+                padding: 10px 20px;
+                font-size: 12px;
+                font-weight: bold;
+                min-width: 100px;
+            }
+            QPushButton:hover {
+                background-color: #505050;
+            }
+            QPushButton:pressed {
+                background-color: #606060;
+            }
+            QFrame#separator {
+                background-color: #555555;
+                max-height: 1px;
+                min-height: 1px;
+            }
+            QTextEdit {
+                background-color: #323232;
+                color: #cccccc;
+                border: 1px solid #555555;
+                border-radius: 4px;
+                font-size: 11px;
+                padding: 10px;
+            }
+        """)
+        main_layout = QVBoxLayout()
+        main_layout.setSpacing(15)
+        main_layout.setContentsMargins(20, 20, 20, 20)
+        title_label = QLabel("Визуализатор алгоритмов")
+        title_label.setObjectName("titleLabel")
+        title_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        main_layout.addWidget(title_label)
+        version_label = QLabel("Версия 1.0.0")
+        version_label.setObjectName("versionLabel")
+        version_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        main_layout.addWidget(version_label)
+        separator1 = QFrame()
+        separator1.setObjectName("separator")
+        separator1.setFrameShape(QFrame.Shape.HLine)
+        main_layout.addWidget(separator1)
+        description_text = QTextEdit()
+        description_text.setReadOnly(True)
+        description_text.setMaximumHeight(80)
+        description_text.setPlainText(
+            "Программа для интерактивной визуализации алгоритмов и структур данных. "
+            "Позволяет изучать алгоритмы через наглядные анимации и примеры кода."
+        )
+        main_layout.addWidget(description_text)
+        features_label = QLabel("Основные возможности:")
+        features_label.setStyleSheet("font-weight: bold; color: #ffffff;")
+        main_layout.addWidget(features_label)
+        features_text = QTextEdit()
+        features_text.setReadOnly(True)
+        features_text.setMaximumHeight(120)
+        features_text.setPlainText("""
+1) Визуализация алгоритмов 
+2) Примеры кода на Python
+3) Подробные описания и сложность
+4) Экспорт данных в TXT/CSV
+5) Оффлайн-режим работы
+        """.strip())
+        main_layout.addWidget(features_text)
+        separator2 = QFrame()
+        separator2.setObjectName("separator")
+        separator2.setFrameShape(QFrame.Shape.HLine)
+        main_layout.addWidget(separator2)
+        info_layout = QVBoxLayout()
+        info_layout.setSpacing(5)
+        developer_label = QLabel("Разработчик: Радмир Рамазанов")
+        info_layout.addWidget(developer_label)
+        course_label = QLabel("Курс: Яндекс Лицей 2")
+        info_layout.addWidget(course_label)
+        year_label = QLabel("Год: 2025")
+        info_layout.addWidget(year_label)
+        main_layout.addLayout(info_layout)
+        tech_label = QLabel("Технологии: Python, PyQt6, SQLite")
+        tech_label.setStyleSheet("font-style: italic; color: #888888;")
+        tech_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        main_layout.addWidget(tech_label)
+        main_layout.addStretch(1)
+        button_layout = QHBoxLayout()
+        button_layout.addStretch(1)
+        close_button = QPushButton("Закрыть")
+        close_button.clicked.connect(self.accept)
+        close_button.setFixedWidth(120)
+        button_layout.addWidget(close_button)
+        main_layout.addLayout(button_layout)
+        self.setLayout(main_layout)
+
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key.Key_Escape:
+            self.accept()
+
+
 class QtAlgorithmVisualizer(QMainWindow, Ui_MainWindow):
     """
     Главный класс
@@ -94,6 +223,7 @@ class QtAlgorithmVisualizer(QMainWindow, Ui_MainWindow):
         self.export_csv_btn.clicked.connect(self.export_to_csv)
         self.update_btn.clicked.connect(self.update_info)
         self.background.clicked.connect(self.wallpaper)
+        self.pushButton.clicked.connect(self.show_about_dialog)
         self.progress_slider.sliderMoved.connect(self.video_player.set_video_position)
         self.verticalLayout_3.insertWidget(0, self.video_player.video_widget)
         self.textEdit.setParent(None)
@@ -135,6 +265,10 @@ class QtAlgorithmVisualizer(QMainWindow, Ui_MainWindow):
         messagebox = QMessageBox(self)
         messagebox.setText("Успешно!")
         messagebox.exec()
+
+    def show_about_dialog(self):
+        dialog = AboutDialog(self)
+        dialog.exec()
 
 
 if __name__ == '__main__':
